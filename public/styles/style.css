@@ -1,0 +1,345 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #4d4d4d;
+    color: black;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.wrapper {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.content {
+    background-color: #ffffff;
+    width: 45%;
+    max-width: 500px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Styles for forms */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-floating {
+    margin-bottom: 1rem;
+}
+
+.form-control {
+    background-color: #2d2d2d;
+    color: #ffffff;
+    border: 1px solid #4a4a4a;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    background-color: #3d3d3d;
+    color: #ffffff;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.form-control::placeholder {
+    color: #a0a0a0;
+}
+
+label {
+    color: #a0a0a0;
+}
+
+/* Styles for buttons */
+.btn-primary {
+    background-color: #d32f2f;
+    border-color: #0d6efd;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #ff5722;
+    border-color: #ff5722;
+}
+
+.btn-primary:active {
+    background-color: #0a58ca;
+    border-color: #0a58ca;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+.btn-secondary:active {
+    background-color: #4e555b;
+    border-color: #4a5056;
+}
+
+/* Styles for the OTP form */
+#otpForm {
+    display: none; /* Hidden by default */
+}
+
+#otpForm .form-control {
+    margin-bottom: 1rem;
+}
+
+#otpForm .btn-primary {
+    width: 100%;
+}
+
+/* Styles for images */
+img {
+    display: block;
+    margin: 0 auto 1rem auto;
+    width: 150px;
+    height: 150px;
+}
+
+/* Styles for the footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #2d2d2d;
+    color: #ffffff;
+    text-align: center;
+    padding: 0.1rem 0; /* Reduce padding to save space */
+    font-size: 0.40rem; /* Reduce font size */
+}
+
+/* Styles for responsiveness */
+@media (max-width: 768px) {
+    .content {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .wrapper {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .btn-primary {
+        padding: 0.5rem;
+    }
+}
+
+/* Additional styles for error messages */
+.alert {
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.alert-danger {
+    background-color: #dc3545;
+    color: #ffffff;
+    border: 1px solid #c82333;
+}
+
+.alert-success {
+    background-color: #28a745;
+    color: #ffffff;
+    border: 1px solid #218838;
+}
+
+/* Styles for the QR code display */
+.qr-code-container {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.qr-code-container img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 1rem;
+}
+
+.qr-code-container p {
+    font-size: 0.9rem;
+    color: #a0a0a0;
+}
+
+/* Styles for the result page */
+.result-message {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.result-message h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color:black;
+}
+
+.result-message a {
+    margin-top: 1rem;
+}
+
+/* Styles for the button in the result page */
+.result-message .btn-primary {
+    background-color: #ffffff; /* White background */
+    color: #000000; /* Black text */
+    border: 1px solid #000000; /* Black border */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.result-message .btn-primary:hover {
+    background-color: #f0f0f0; /* Light gray on hover */
+    color: #000000; /* Keep text black */
+}
+
+.result-message .btn-primary:active {
+    background-color: #e0e0e0; /* Slightly darker gray on click */
+    color: #000000; /* Keep text black */
+}
+
+/* Styles for the signup page */
+.signup-form {
+    text-align: center;
+}
+
+.signup-form h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: black;
+}
+
+.signup-form .form-control {
+    margin-bottom: 1rem;
+}
+
+.signup-form .btn-primary {
+    width: 100%;
+}
+
+/* Styles for the login page */
+.login-form {
+    text-align: center;
+}
+
+.login-form h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: black;
+}
+
+.login-form .form-control {
+    margin-bottom: 1rem;
+}
+
+.login-form .btn-primary {
+    width: 100%;
+}
+
+/* Styles for the logout button */
+.btn-logout {
+    background-color: #dc3545; /* Red background */
+    border: none;
+    color: #ffffff; /* White text */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-logout:hover {
+    background-color: #c82333; /* Darker red on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.btn-logout:active {
+    background-color: #bd2130; /* Even darker red on click */
+    transform: translateY(0);
+}
+
+/* Styles for the forgot password page */
+.forgot-password-form {
+    text-align: center;
+}
+
+.forgot-password-form h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: black;
+}
+
+.forgot-password-form .form-control {
+    margin-bottom: 1rem;
+}
+
+.forgot-password-form .btn-primary {
+    width: 100%;
+}
+
+/* Styles for the reset password page */
+.reset-password-form {
+    text-align: center;
+}
+
+.reset-password-form h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: black;
+}
+
+.reset-password-form .form-control {
+    margin-bottom: 1rem;
+}
+
+.reset-password-form .btn-primary {
+    width: 100%;
+}
+
+/* Styles for the message container */
+#message {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #dc3545; /* Red color for error messages */
+}
+
+#message.success {
+    color: #28a745; /* Green color for success messages */
+}
+#loginForm h1,
+#signupForm h1,
+#otpForm h1 {
+    color: black;
+}

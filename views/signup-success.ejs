@@ -1,0 +1,14 @@
+<%- include("./partials/header.ejs") %>
+
+<div class="wrapper">
+    <div class="content rounded">
+        <h1 class="h3 mb-3 fw-normal">Registration Successful!</h1>
+        <p><%= message %></p>
+        <div class="d-flex flex-column gap-2">
+            <a href="/user/signup" class="btn btn-primary w-100 py-2">Return to Sign Up</a>
+            <a href="/user" class="btn btn-secondary w-100 py-2">Go to Login</a>
+        </div>
+    </div>
+</div>
+
+<%- include("./partials/footer.ejs") %>

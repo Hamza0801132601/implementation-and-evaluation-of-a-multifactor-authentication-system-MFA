@@ -1,0 +1,58 @@
+<%- include("./partials/header.ejs") %>
+
+<div class="wrapper">
+    <div class="content rounded">
+        <form id="loginForm" method="post" action="/user" class="d-flex flex-column">
+            <img class="mb-4" src="/assets/ssi1.png" alt="user" width="72" height="57">
+            
+            <% if (locals.message) { %>
+              <h1 class="h3 mb-3 fw-normal"> <%= message %> </h1>
+            <% } else { %>
+              <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+            <% } %>
+        
+            <div class="form-floating">
+              <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" required>
+              <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
+              <label for="floatingPassword">Password</label>
+            </div>
+        
+            <button class="btn btn-primary w-80 py-2" type="submit">Sign in</button>
+        </form>
+
+        <hr class="featurette-divider">
+        <div>
+            <a href="/user/signup" class="btn btn-primary w-100 py-2">New User? Sign Up!</a>
+        </div>
+        <!-- Add Forgot Password Link -->
+        <div class="mt-3">
+            <a href="/user/forgot-password" class="btn btn-secondary w-100 py-2">Forgot Password?</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Handle login form submission
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const response = await fetch("/user", {
+            method: "POST",
+            body: JSON.stringify(Object.fromEntries(formData)),
+            headers: { "Content-Type": "application/json" },
+        });
+        const data = await response.json();
+
+        if (data.message === "OTP sent to your email. Please verify.") {
+            // Redirect to the OTP verification page
+            window.location.href = `/user/verify-otp?userId=${data.userId}`;
+        } else {
+            alert(data.message);
+        }
+    });
+</script>
+
+<%- include("./partials/footer.ejs") %>

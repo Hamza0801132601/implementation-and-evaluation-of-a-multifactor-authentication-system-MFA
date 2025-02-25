@@ -1,0 +1,19 @@
+<%- include("./partials/header.ejs") %>
+
+<div class="wrapper">
+    <div class="content rounded">
+        <h1 class="h3 mb-3 fw-normal">Login Successful!</h1>
+        <p><%= message %></p>
+        <div>
+            <a href="/user" class="btn btn-primary w-100 py-2">Return to Home</a>
+        </div>
+        <!-- Add Logout Button -->
+        <div class="mt-3">
+            <form action="/user/logout" method="POST">
+                <button type="submit" class="btn btn-danger w-100 py-2">Log Out</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include("./partials/footer.ejs") %>

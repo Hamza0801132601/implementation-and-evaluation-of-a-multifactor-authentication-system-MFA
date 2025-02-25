@@ -1,0 +1,63 @@
+<%- include("./partials/header.ejs") %>
+
+<div class="wrapper">
+    <div class="content rounded">
+        <h1 class="h3 mb-3 fw-normal">Verify OTP</h1>
+        <form id="otpForm" method="post" action="/user/verify-otp" class="d-flex flex-column">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="otpToken" placeholder="Enter OTP" name="otp" required>
+                <label for="otpToken">Enter OTP</label>
+            </div>
+            <input type="hidden" name="userId" value="<%= userId %>">
+            <button class="btn btn-primary w-80 py-2" type="submit">Verify</button>
+        </form>
+        <!-- Add Resend OTP Button -->
+        <div class="mt-3">
+            <button id="resendOtpButton" class="btn btn-secondary w-80 py-2">Resend OTP</button>
+        </div>
+        <!-- Error Message Display -->
+        <div id="errorMessage" class="mt-3 text-danger"></div>
+    </div>
+</div>
+
+<script>
+    // Handle OTP form submission
+    document.getElementById("otpForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const response = await fetch("/user/verify-otp", {
+            method: "POST",
+            body: JSON.stringify(Object.fromEntries(formData)),
+            headers: { "Content-Type": "application/json" },
+        });
+        const data = await response.json();
+
+        if (response.status === 200) {
+            // Redirect to the result page on successful OTP verification
+            window.location.href = "/user/result";
+        } else {
+            // Display error message
+            document.getElementById("errorMessage").textContent = data.message;
+        }
+    });
+
+    // Handle Resend OTP button click
+    document.getElementById("resendOtpButton").addEventListener("click", async () => {
+        const userId = "<%= userId %>"; // Get userId from the template
+        const response = await fetch("/user/resend-otp", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userId }),
+        });
+        const data = await response.json();
+        console.log("Resend OTP Response:", data);
+
+        if (data.message === "New OTP sent to your email.") {
+            alert("A new OTP has been sent to your email.");
+        } else {
+            alert(data.message);
+        }
+    });
+</script>
+
+<%- include("./partials/footer.ejs") %>
